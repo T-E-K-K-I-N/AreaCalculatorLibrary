@@ -13,9 +13,9 @@ namespace AreaCalculatorLibrary
         /// <summary>
         /// Creates a circle object
         /// </summary>
-        public void CreateCircle(string titile, double radius)
+        public void CreateCircle(string title, double radius)
         {
-            Circle circle = new Circle(titile, radius);
+            Circle circle = new Circle(title, radius);
 
             var results = new List<ValidationResult>();
             var context = new ValidationContext(circle);

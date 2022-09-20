@@ -9,21 +9,19 @@ namespace AreaCalculatorLibrary.Models
 {
     public class Triangle : Figure
     {
-        [Required(ErrorMessage = "There must be a value for the AB side")]
-        [Range(0, 100, ErrorMessage = "An incorrect value was entered for the AB side")]
         public double AB { get; private set; }
 
-        [Required(ErrorMessage = "There must be a value for the BC side")]
-        [Range(0, 100, ErrorMessage = "An incorrect value was entered for the BC side")]
         public double BC { get; private set; }
 
-        [Required(ErrorMessage = "There must be a value for the AC side")]
-        [Range(0, 100, ErrorMessage = "An incorrect value was entered for the AC side")]
         public double AC { get; private set; }
 
         public Triangle (string title, double ab, double bc, double ac ) : base(title)
         {
-            if (ab > (bc + ac) || bc > (ab + ac) || ac > (ab + bc))
+            if (ab < 0 || bc < 0 || ac < 0) 
+            { 
+                throw new ArgumentException($"Error: Side can not be less than 0\nCheck your input values"); 
+            }
+            else if (ab > (bc + ac) || bc > (ab + ac) || ac > (ab + bc))
             {
                 throw new ArgumentException($"Error: Your side greater than summary of two another sides\n" +
                     $"Check your input values");

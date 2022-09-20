@@ -13,8 +13,8 @@ namespace AreaCalculatorLibrary
         {
             Creator creator = new Creator();
 
-            creator.CreateCircle("Circle", 7);
-            creator.CreateTriangle("Triangle", 7, 7, 6);
+            creator.CreateCircle("Circle",7);
+            creator.CreateTriangle("Triangle",7, 7, 6);
         }
     }
 }

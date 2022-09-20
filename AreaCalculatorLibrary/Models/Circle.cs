@@ -9,13 +9,19 @@ namespace AreaCalculatorLibrary.Models
 {
     public class Circle : Figure
     {
-        [Required(ErrorMessage = "There must be a value for the Radius")]
-        [Range(0, 100, ErrorMessage = "An incorrect value was entered for the Radius")]
         public double Radius { get; private set; }
 
         public Circle(string title, double radius) : base(title)
         {
-            Radius = radius;
+            if(radius < 0)
+            {
+                throw new ArgumentException($"Error: Radius can not be less than 0\n" +
+                    $"Check your input values");
+            }
+            else
+            {
+                Radius = radius;
+            }
         }
 
         public override double CalculateArea()

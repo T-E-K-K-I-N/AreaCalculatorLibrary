@@ -24,5 +24,16 @@ namespace AreaCalculatorTests
             // assert
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod("Validation test")]
+        public void CircleTestInput_Incorrect()
+        {
+            // arrange
+            Circle circle;
+
+            // assert
+            Assert.ThrowsException<ArgumentException>(() => circle = new Circle(null, 5));
+            Assert.ThrowsException<ArgumentException>(() => circle = new Circle("Circle", -8));
+        }
     }
 }

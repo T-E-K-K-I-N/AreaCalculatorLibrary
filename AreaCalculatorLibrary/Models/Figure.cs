@@ -4,12 +4,19 @@ namespace AreaCalculatorLibrary.Models
 {
     public abstract class Figure
     {
-        //[Required(ErrorMessage = "The name of the figure is missing!")]
-        public string Title { get; private set; }
+        public string? Title { get; private set; }
 
         public Figure(string title)
-        {
-            Title = title;
+        { 
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentException($"Error: Title can not be empty or have a null value\n" +
+                    $"Check your input value");
+            }
+            else
+            {
+                Title = title;
+            }
         }
 
         public abstract double CalculateArea();

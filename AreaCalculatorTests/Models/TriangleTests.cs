@@ -50,14 +50,16 @@ namespace AreaCalculatorTests
             Assert.IsTrue(result);
         }
 
-        [TestMethod("Мalidation test from the side")]
-        public void TriangleTestInputSide_Incorrect()
+        [TestMethod("Validation test")]
+        public void TriangleTestInput_Incorrect()
         {
             // arrange
             Triangle triangle;
 
             // assert
-            Assert.ThrowsException<ArgumentException>(() => triangle = new Triangle("Triangle", 55, 4, 6));
+            Assert.ThrowsException<ArgumentException>(() => triangle = new Triangle("Triangle", -1, 5, 7));
+            Assert.ThrowsException<ArgumentException>(() => triangle = new Triangle("Triangle", 66, 4, 6));
+            Assert.ThrowsException<ArgumentException>(() => triangle = new Triangle(null, 5, 4, 6));
         }
     }
 }
